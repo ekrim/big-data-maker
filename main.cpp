@@ -10,17 +10,23 @@ void readme(){
 
 
 int main(int argc, char **argv){
+  unsigned rows, cols;
   if (argc == 3){
-    unsigned rows = atoi(argv[1]);
-    unsigned cols = atoi(argv[2]);  
+    rows = atoi(argv[1]);
+    cols = atoi(argv[2]);  
   } else {
     readme();
     return 1;
   }
+ 
+  char filename [50];
+  int n = sprintf(filename, "%drows_%dcols.csv", rows, cols);
 
   std::ofstream f_csv;
-  f_csv.open("mycsv.csv");
-  f_csv << "Fuck yall\n";
+  f_csv.open(filename);
+
+  cout << filename << endl; 
+
   f_csv.close();
   return 0;
 }
